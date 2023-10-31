@@ -1,1 +1,187 @@
+CREATE DATABASE film
+USE film
+ CREATE TABLE Producer2
+ (
+prod_id INT,
+prod_name VARCHAR(50),
+movie_name VARCHAR(50),
+movie_budget VARCHAR(50),
+movie_rating INT,
+release_year INT
+); 
+Insert into producer2 values(305,'ARCHANA','THANIORUVAN','15 CRORES INR',8,2015);
+
+1 row created.
+
+SQL> Insert into producer2 values(574,'DHANUSH','VIP','8 CRORES INR',8,2014);
+
+1 row created.
+
+SQL> Insert into producer2 values(648,'GNANAVEL RAJA','TEDDY','16 CRORES INR',6,2021);
+
+1 row created.
+
+SQL> Insert into producer2 values(305,'ARCHANA','BIGIL','110 CRORES INR',7,2019);
+
+1 row created.
+
+SQL> Insert into producer2 values(475,'MURUGADAS','RAJA RANI','40 CRORES INR',9,2013);
+
+1 row created.
+
+SQL> Insert into producer2 values(532,'SHANKAR','JILLA','6 CRORES INR',9,2013);
+
+1 row created.
+
+SQL> Insert into producer2 values(231,'SIVA','SINGAM1','8 CRORES INR',4,2016);
+
+1 row created.
+
+SQL> Insert into producer2 values(281,'SHANKAR','EESWARAN','4 CRORES INR',9,2018);
+
+1 row created.
+
+SQL> Insert into producer2 values(423,'SHANKAR','SINGAM2','7 CRORES INR',14,2020);
+
+1 row created.
+
+SQL> Insert into producer2 values(142,'SHANKAR','SINGAM3','13 CRORES INR',11,2022);
+
+1 row created.
+SQL> select*from producer2;
+CREATE TABLE Actor1
+  2  (
+  3  ACTOR_name VARCHAR(60),
+  4  Gender VARCHAR(50),
+  5  Age INT,
+  6  Acted_movie VARCHAR(50),
+  7  Acted_year INT,
+  8  salary VARCHAR(250),
+  9  Tot_film_acted INT,
+ 10  Cinefield_exp INT
+ 11  );
+SQL> Insert into Actor1 values('SRIKANTH','MALE',44,'KANNAI NAMBATHEY',2023,'2 CRORES',46,21);
+
+1 row created.
+
+SQL> Insert into Actor1 values('KARTHI','MALE',46,'VIRUMAN',2022,'25 CRORES',29,15);
+
+1 row created.
+
+SQL> Insert into Actor1 values('VIJAY','MALE',49,'SARKAR',2022,'150 CRORES',67,31);
+
+1 row created.
+
+SQL> Insert into Actor1 values('AJITH','MALE',52,'VISWASAM',2019,'150 CRORES',57,33);
+
+1 row created.
+
+SQL> Insert into Actor1 values('SIMBU','MALE',47,'MANMADHAN',2016,'56 CRORES',46,22);
+
+1 row created.
+
+SQL> Insert into Actor1 values('SURIYA','MALE',47,'JAIBHIM',2020,'59 CRORES',51,32);
+
+1 row created.
+
+
+
+SQL> Insert into Actor1 values('DHANUSH','MALE',41,'VAATHAI',2021,'87 CRORES',41,22);
+
+1 row created.
+
+SQL> Insert into Actor1 values('RAJINI','MALE',64,'JAIYLER',2022,'200 CRORES',101,42);
+
+1 row created.
+CREATE TABLE movies1
+  2  (
+  3  certificate_id VARCHAR(50),
+  4  Title VARCHAR(60),
+  5  Genres VARCHAR(50),
+  6  Director VARCHAR(50),
+  7  Production_company VARCHAR(50),
+  8  Artist_count INT,
+  9  Movie_length VARCHAR(50),
+ 10  Movie_lang VARCHAR(50),
+ 11  Release_year INT,
+ 12  Budget VARCHAR(250),
+ 13  Box_office VARCHAR(250),
+ 14  Star_rating float
+ 15  );
+
+
+8 rows selected.
+SQL> Insert into movies1 values('U/A','ASURAN','THRILLER','VETRIMARAN','V CREATION',1056,'140 MINS','TAMIL',2019,'20 CRORES','50 CRORES',8.2);
+
+1 row created.
+
+SQL> Insert into movies1 values('U/A','ASURAN','THRILLER','VETRIMARAN','V CREATION',1056,'140 MINS','TAMIL',2019,'20 CRORES','50 CRORES',8.2);
+
+1 row created.
+
+SQL> Insert into movies1 values('U/A','JILLA','ACTION','R.T.NEASON','SUPER GOOD FILMS',2490,'140 MINS','TAMIL',2017,'10 CRORES','30 CRORES',6.2);
+
+1 row created.
+
+SQL> Insert into movies1 values('U/A','WRONG TURN 3','HORROR','DECLAN O BRIEN','CONSTRAIN FILM',1350,'92 MINS','ENGLISH',2018,'13 CRORES','140 CRORES',9.2);
+
+1 row created.
+
+SQL> Insert into movies1 values('U/A','SINGAM','ACTION','HARI','STUDIO GREEN',1580,'140 MINS','TAMIL',2018,'15 CRORES','90 CRORES',7.2);
+
+1 row created.
+
+SQL> Insert into movies1 values('U/A','SAAMI','ACTION','HARI','STUDIO GREEN',1500,'140 MINS','TAMIL',2008,'25 CRORES','70 CRORES',6.2);
+
+1 row created.
+1.\\Find the name of all the Films whose producer2 is 'ARCHANA'.\\
+SQL> SELECT movie_name from producer2
+    where prod_name='ARCHANA';
+2.\\Display the names of films with the stars received and sort the results on the basis of stars.\\
+select title,star_rating from movies1
+   ORDER BY star_rating;
+3.\\Display all artist who acted in a film BETWEEN 2016 AND 2022.\\
+SQL> select actor_name from actor1
+  2  where acted_year BETWEEN 2016 AND 2022;
+CREATE TABLE DIRECTOR
+  2  (
+  3  Dir_name VARCHAR(50),
+  4  Dir_age INT
+  5  );
+ select*from director;
+4.\\query to fetch dir_name from director table in lower case\\
+SQL> select lower(dir_name)from director;
+5.\\query to all director details from the director table order by dir_age assending'\\
+select*from director order by dir_age asc;
+6.\\Add a new column gender into the Director table\\
+SQL> alter table director
+  2  add(gender varchar(50));
+7.\\update the column gender in director table whose age is 54 to male\\
+ update director
+set gender='male' where dir_age=54;
+8.\\delete a row where director name is lokesh\\
+DELETE from director
+where dir_name='LOKESH';
+9.\\remove the gender column\\
+ alter table director
+  2  drop column gender;
+SQL> select*from director;
+10.\\change the name of the table director\\
+SQL> alter table director
+  2  rename to directorinfo;
+SQL> select*from directorinfo;
+11.\\show all the Dir_name whom Gender are not mentioned in the director table.\\
+SQL> select dir_name
+  2  from directorinfo
+  3  where GENDER is null;
+12.\\To find the maximum,minimum,and average salary of the employess\\.
+
+ select max(dir_age),
+  2  avg(dir_age),
+  3  from directorinfo;
+from directorinfo
+MAX(DIR_AGE) MIN(DIR_AGE) AVG(DIR_AGE)
+------------ ------------ ------------
+          65           37         48.9
+
 
